@@ -40,7 +40,13 @@ class Controller_Projects extends Controller {
             ->bind('project', $project);
 		$this->response->body($view);
     }
-    public function action_update() {
+
+    public function action_taskdelete() {
+        $task = ORM::factory('task')->where('id', '=', $_POST['task_id'])->find()->delete();
+
+        die();
+    }
+    public function action_taskupdate() {
         $task = ORM::factory('task', $_POST['task_id']);
 
         $task->completed = $_POST['completed'];

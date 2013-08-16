@@ -130,12 +130,6 @@ Route::set('projects', 'projects')
         'action' => 'list'
     ));
 
-Route::set('project-update', 'projects/update')
-	->defaults(array(
-        'controller' => 'projects',
-        'action' => 'update'
-    ));
-
 Route::set('project', 'projects/<id>')
 	->defaults(array(
         'controller' => 'projects',
@@ -146,4 +140,16 @@ Route::set('project-edit', 'projects/<id>/edit')
 	->defaults(array(
         'controller' => 'projects',
         'action' => 'edit'
+    ));
+
+Route::set('task-update', 'task/update')
+	->defaults(array(
+        'controller' => 'projects',
+        'action' => 'taskupdate'
+    ));
+
+Route::set('task-delete', 'task/delete')
+	->defaults(array(
+        'controller' => 'projects',
+        'action' => 'taskdelete'
     ));
