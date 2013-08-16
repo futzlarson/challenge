@@ -13,6 +13,14 @@ class Controller_Projects extends Controller {
         $id = $this->request->param('id');
         $project = ORM::factory('project', $id);
 
+        if ($_POST) {
+            $task = ORM::factory('task');
+            $task->project_id = $_POST['project_id'];
+            $task->name = $_POST['name'];
+            $task->due_at = $_POST['due_at'];
+            $task->save();
+        }
+
         $view = View::factory('projects/tasks')
             ->bind('project', $project);
 		$this->response->body($view);
