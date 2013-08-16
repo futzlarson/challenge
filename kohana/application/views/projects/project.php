@@ -1,6 +1,8 @@
 <style>
     input[type=text] { width: 200px }
 
+    .completed { text-decoration: line-through }
+
     #edit {
         font-size: 12px;
         font-weight: normal;
@@ -11,8 +13,8 @@
 
 <ol>
     <? foreach ($project->tasks() as $t) { ?>
-        <li task_id="<?= $t->id ?>">
-            <input task_id="<?= $t->id ?>" type="checkbox" />
+        <li task_id="<?= $t->id ?>" <? if ($t->completed) { ?>class="completed"<? } ?>>
+            <input <? if ($t->completed) { ?>checked="checked"<? } ?> task_id="<?= $t->id ?>" type="checkbox" />
             <?= $t->name ?>: <?= $t->due() ?>
         </li>
     <? } ?>
