@@ -130,10 +130,10 @@ Route::set('projects', 'projects')
         'action' => 'list'
     ));
 
-Route::set('project-tasks', 'projects/<id>')
+Route::set('project', 'projects/<id>')
 	->defaults(array(
         'controller' => 'projects',
-        'action' => 'tasks'
+        'action' => 'project'
     ));
 
 Route::set('project-edit', 'projects/<id>/edit')

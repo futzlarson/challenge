@@ -24,7 +24,7 @@ class Controller_Projects extends Controller {
             ->bind('projects', $projects);
 		$this->response->body($view);
 	}
-    public function action_tasks() {
+    public function action_project() {
         $id = $this->request->param('id');
         $project = ORM::factory('project', $id);
 
@@ -36,7 +36,7 @@ class Controller_Projects extends Controller {
             $task->save();
         }
 
-        $view = View::factory('projects/tasks')
+        $view = View::factory('projects/project')
             ->bind('project', $project);
 		$this->response->body($view);
     }
