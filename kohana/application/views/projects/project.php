@@ -11,7 +11,8 @@
 
 <ol>
     <? foreach ($project->tasks() as $t) { ?>
-        <li>
+        <li task_id="<?= $t->id ?>">
+            <input task_id="<?= $t->id ?>" type="checkbox" />
             <?= $t->name ?>: <?= $t->due() ?>
         </li>
     <? } ?>
@@ -37,5 +38,21 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>
     $(function() {
+        $('[type=checkbox]').change(function() {
+            var task_id = $(this).attr('task_id'),
+            completed = $(this).is(':checked') ? 1 : 0;
+
+            $.post('/kohana/index.php/projects/update', {
+                task_id: task_id,
+                completed: completed
+            }, function() {
+                var li = $('li[task_id=' + task_id + ']');
+
+                if (completed)
+                    li.css('text-decoration', 'line-through');
+                else
+                    li.css('text-decoration', 'none');
+            });
+        });
     });
 </script>

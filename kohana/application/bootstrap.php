@@ -130,6 +130,12 @@ Route::set('projects', 'projects')
         'action' => 'list'
     ));
 
+Route::set('project-update', 'projects/update')
+	->defaults(array(
+        'controller' => 'projects',
+        'action' => 'update'
+    ));
+
 Route::set('project', 'projects/<id>')
 	->defaults(array(
         'controller' => 'projects',
