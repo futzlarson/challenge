@@ -135,3 +135,9 @@ Route::set('project-tasks', 'projects/<id>')
         'controller' => 'projects',
         'action' => 'tasks'
     ));
+
+Route::set('project-edit', 'projects/<id>/edit')
+	->defaults(array(
+        'controller' => 'projects',
+        'action' => 'edit'
+    ));

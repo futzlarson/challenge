@@ -1,8 +1,13 @@
 <style>
     input[type=text] { width: 200px }
+
+    #edit {
+        font-size: 12px;
+        font-weight: normal;
+    }
 </style>
 
-<h1><?= $project->name ?>: Tasks</h1>
+<h1><?= $project->name ?>: Tasks <a id="edit" href="<?= $project->id ?>/edit">EDIT NAME</a></h1>
 
 <ol>
     <? foreach ($project->tasks() as $t) { ?>

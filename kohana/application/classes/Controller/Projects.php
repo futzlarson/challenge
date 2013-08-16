@@ -2,6 +2,21 @@
 
 class Controller_Projects extends Controller {
 
+    public function action_edit() {
+        $id = $this->request->param('id');
+        $project = ORM::factory('project', $id);
+
+        if ($_POST) {
+            $project->name = $_POST['name'];
+            $project->save();
+
+            $this->redirect("/projects/$id");
+        }
+
+        $view = View::factory('projects/edit')
+            ->bind('project', $project);
+        $this->response->body($view);
+    }
     public function action_list() {
         $projects = ORM::factory('project')->find_all();
 
@@ -24,6 +39,5 @@ class Controller_Projects extends Controller {
         $view = View::factory('projects/tasks')
             ->bind('project', $project);
 		$this->response->body($view);
-
     }
 }
